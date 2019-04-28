@@ -11,6 +11,7 @@ resources:
 steps:
   - task: PowerShell@2
     inputs:
+      targetType: inline
       script: |
         $global:PesterDebugPreference_ShowFullErrors = $true
         Set-StrictMode -Version Latest
