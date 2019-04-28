@@ -9,13 +9,15 @@ resources:
     fetchDepth: 1
 
 steps:
-  - powershell: |
-      $global:PesterDebugPreference_ShowFullErrors = $true
-      Set-StrictMode -Version Latest
-      Import-Module .\Pester.psd1
-      Invoke-Pester -ExcludeTag VersionChecks, StyleRules, Help -EnableExit
-    errorActionPreference: stop
-    pwsh: true
+  - task: PowerShell@2
+    inputs:
+      script: |
+        $global:PesterDebugPreference_ShowFullErrors = $true
+        Set-StrictMode -Version Latest
+        Import-Module .\Pester.psd1
+        Invoke-Pester -ExcludeTag VersionChecks, StyleRules, Help -EnableExit
+      errorActionPreference: stop
+      pwsh: true
 
 
 # jobs:
